@@ -1,11 +1,15 @@
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>
 			<%= title %>
 		</title>
+		<% _.forEach(<%= scripts{} %> , function(script) { %>
+			<script src="<%- script %>"></script>
+		<% }); %>
 	</head>
 	<body>
 	</body>	
 </html>
 
-<% _.forEach(<%= users{} %> , function(user) { %><li><%- user %></li><% }); %>
+
