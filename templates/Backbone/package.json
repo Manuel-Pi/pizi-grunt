@@ -1,0 +1,19 @@
+{
+  "name": "pizi-backbone-indexedDB",
+  "homepage": "https://github.com/Manuel-Pi/pizi-backbone-indexedDB",
+  "main": "build/pizi-backbone-indexedDB.js",
+  "dependencies": {
+    "backbone": "*"
+  },
+  "version": "0.0.0",
+  "authors": "Manuel-Pi",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-babel": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-npmcopy": "*",
+    "jquery": "*"
+  }
+}
