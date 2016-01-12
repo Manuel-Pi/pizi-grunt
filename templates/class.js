@@ -1,4 +1,4 @@
-var <%= className %> = function(){
+var <$ className $> = function(){
 	
 };
-// By <%= author %>
+// By <$ author $>

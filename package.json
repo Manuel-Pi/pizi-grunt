@@ -9,8 +9,9 @@
   "author": "Manuel-Pi",
   "license": "ISC",
   "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-prompt": "^1.3.0",
+    "grunt": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-prompt": "*",
     "lodash": "^3.10.1",
     "prompt": "^0.2.14"
   }
