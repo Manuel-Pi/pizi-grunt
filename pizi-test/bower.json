@@ -1,0 +1,13 @@
+{
+  "name": "xwcwc",
+  "homepage": "https://github.com//xwcwc",
+  "main": "build/xwcwc.js",
+  "dependencies": {
+    "backbone": "*"
+  },
+  "version": "0.0.0",
+  "authors": "",
+  "ignore": [
+  	"package.json"
+  ]
+}

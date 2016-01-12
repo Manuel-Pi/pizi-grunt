@@ -1,12 +1,12 @@
 {
-  "name": "<$ projectName $>",
-  "homepage": "https://github.com/<$ author $>/<$ projectName $>",
-  "main": "build/<$ projectName $>.js",
+  "name": "sdfsf",
+  "homepage": "https://github.com/sdfsf/sdfsf",
+  "main": "build/sdfsf.js",
   "dependencies": {
     "backbone": "*"
   },
   "version": "0.0.0",
-  "authors": "<$ author $>",
+  "authors": "sdfsf",
   "devDependencies": {
     "grunt": "*",
     "grunt-babel": "*",

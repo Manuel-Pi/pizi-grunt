@@ -1,12 +1,12 @@
 {
-  "name": "pizi-backbone-indexedDB",
-  "homepage": "https://github.com/Manuel-Pi/pizi-backbone-indexedDB",
-  "main": "build/pizi-backbone-indexedDB.js",
+  "name": "<$ projectName $>",
+  "homepage": "https://github.com/<$ author $>/<$ projectName $>",
+  "main": "build/<$ projectName $>.js",
   "dependencies": {
     "backbone": "*"
   },
   "version": "0.0.0",
-  "authors": "Manuel-Pi",
+  "authors": "<$ author $>",
   "ignore": [
   	"package.json"
   ]
