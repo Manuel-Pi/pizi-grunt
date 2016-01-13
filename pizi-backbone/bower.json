@@ -1,0 +1,13 @@
+{
+  "name": "pizi-backbone",
+  "homepage": "https://github.com/Manuel-Pi/pizi-backbone",
+  "main": "build/pizi-backbone.js",
+  "dependencies": {
+    "backbone": "*"
+  },
+  "version": "0.0.0",
+  "authors": "Manuel-Pi",
+  "ignore": [
+  	"package.json"
+  ]
+}

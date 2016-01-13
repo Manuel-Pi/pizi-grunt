@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		srcFile: 'src/',
 		build: 'build/',
 		testFile: 'tests/',
-		serverFolder: 'C:/Users/e_na/Documents/GitHub/pizi-express-server/Apps/<$ projectName $>/',
+		serverFolder: 'C:/Users/e_na/Documents/GitHub/pizi-express-server/Apps/<$$= projectName $$>/',
 		jshint: {
 			all: {
 				options: {

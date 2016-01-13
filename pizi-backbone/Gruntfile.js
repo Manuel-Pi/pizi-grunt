@@ -3,14 +3,14 @@ module.exports = function(grunt) {
 		srcFile: 'src/',
 		build: 'build/',
 		testFile: 'tests/',
-		serverFolder: 'C:/Users/e_na/Documents/GitHub/pizi-express-server/Apps/fsdfsf/',
+		serverFolder: 'C:/Users/e_na/Documents/GitHub/pizi-express-server/Apps/pizi-backbone/',
 		jshint: {
 			all: {
 				options: {
 					devel: true,
 					esnext: true
 				},
-				src: ''
+				src: '<%= srcFile %>'
 			}
 		},
 		copy: {
@@ -18,15 +18,15 @@ module.exports = function(grunt) {
 					files : [
 						{
 							expand: true,
-							cwd: '',
+							cwd: '<%= srcFile %>',
 							src: ['**'],
-							dest: ''
+							dest: '<%= serverFolder %>'
 						},
 						{
 							expand: true,
-							cwd: '',
+							cwd: '<%= testFile %>',
 							src: ['**'],
-							dest: ''
+							dest: '<%= serverFolder %>'
 						}
 					]
 			},
@@ -34,15 +34,15 @@ module.exports = function(grunt) {
 				files : [
 					{
 						expand: true,
-						cwd: '',
+						cwd: '<%= build %>',
 						src: ['**'],
-						dest: ''
+						dest: '<%= serverFolder %>'
 					},
 					{
 						expand: true,
-						cwd: '',
+						cwd: '<%= testFile %>',
 						src: ['**'],
-						dest: ''
+						dest: '<%= serverFolder %>'
 					},
 					{
 						expand: true,
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 							'backbone/node_modules/underscore/underscore.js',
 							'jquery/dist/jquery.js'
 						],
-						dest: '',
+						dest: '<%= serverFolder %>',
 						flatten: true
 					}
 				]
@@ -62,8 +62,8 @@ module.exports = function(grunt) {
 			options :{
 				force : true
 			},
-			deployDev: '',
-			build: ''
+			deployDev: '<%= serverFolder %>',
+			build: '<%= build %>'
 		},
 		babel: {
 			options: {
@@ -74,9 +74,9 @@ module.exports = function(grunt) {
 			dist: {
 				files: [{
 					"expand": true,
-					"cwd": '',
+					"cwd": '<%= srcFile %>',
 					"src": ["**/*.js"],
-					"dest": '',
+					"dest": '<%= build %>',
 					"ext": ".js"
 				}]
 			}

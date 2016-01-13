@@ -1,12 +1,12 @@
 {
-  "name": "<$ projectName $>",
-  "homepage": "https://github.com/<$ author $>/<$ projectName $>",
-  "main": "build/<$ projectName $>.js",
+  "name": "<$$= projectName $$>",
+  "homepage": "https://github.com/<$$= author $$>/<$= projectName $>",
+  "main": "build/<$= projectName $>.js",
   "dependencies": {
     "backbone": "*"
   },
   "version": "0.0.0",
-  "authors": "<$ author $>",
+  "authors": "<$= author $>",
   "devDependencies": {
     "grunt": "*",
     "grunt-babel": "*",

@@ -6,6 +6,8 @@ module.exports = function(grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-copy');
   
+  grunt.template.addDelimiters('pizi', '<$', '$>');
+  
   // Do grunt-related things in here
   grunt.initConfig({
     generate: {
@@ -42,49 +44,45 @@ module.exports = function(grunt) {
     var template = grunt.file.read(file);
     
     // Get template's fields needed
-    var templateFields = template.match(/<\$[A-Za-z0-9\[\]\s]*\$>/gi) || [];
+    var templateFields = template.match(/<\$\$=[A-Za-z0-9\[\]\s]*\$\$>/gi) || [];
     
     templateFields = Array.from(new Set(templateFields));
     
     // Field parser
     function parseField(field){
       var fieldComplete = {};
-      
       if(field.indexOf('[') !== -1){
         fieldComplete.type = 'array';
         fieldComplete.name = field.substring(0, field.indexOf('['));
-        
         var limits = field.substring(field.indexOf('[') + 1, field.indexOf(']')).split(',');
-        
-        if(limits[0])
-          fieldComplete.maxItems = parseInt(limits[0]);
-        
-        if(limits[1])
-          fieldComplete.minItems = parseInt(limits[1]);
-          
-        template = template.replace(/<\$/gi, '').replace(/\$>/gi, '');
+        if(limits[0]) fieldComplete.maxItems = parseInt(limits[0]);
+        if(limits[1]) fieldComplete.minItems = parseInt(limits[1]);
+        template = template.replace('<$$= ' + fieldComplete.name + '[] $$>', fieldComplete.name);
       } else {
         fieldComplete.type = 'string';
         fieldComplete.name = field;
-        template = template.replace(/<\$/gi, '<%=').replace(/\$>/gi, '%>');
       }
-
       return fieldComplete;
     }
     
     for(var i = 0; i < templateFields.length; i++){
-      templateFields[i] = parseField(templateFields[i].replace(/[<$$>\s]/gi, ''));
+      templateFields[i] = parseField(templateFields[i].replace(/[<$=>\s]/gi, ''));
     }
+    template = template.replace(/\$\$/gi, '$');
 
     // Prompt user for values
     var done = this.async();
     var args = arguments;
+    config.param = config.param || {};
+    prompt.override = config.param;
     prompt.start();
     prompt.get(templateFields, function (err, result) {
         var fileExtension = file.split(".");
         fileExtension = "." + fileExtension[fileExtension.length - 1];
+        // Save parameters
+        grunt.config('generate.param', _.extend(config.param, result));
         // Write file
-        grunt.file.write( args[2] + '/' + args[1] + fileExtension, grunt.template.process(template, {data: result}));
+        grunt.file.write( args[2] + '/' + args[1] + fileExtension, grunt.template.process(template, {data: result, delimiters: 'pizi'}));
         done(true);
     });
   });
@@ -96,6 +94,8 @@ module.exports = function(grunt) {
     var projectName = arguments[1];
     var projectTemplate = arguments[0];
     
+    grunt.config('generate.param', {projectName: projectName});
+    
     // Get config options
     var config = grunt.config('generateProject');
     
@@ -105,11 +105,14 @@ module.exports = function(grunt) {
     
     var parseDir = function(dir){
       if(dir) dir = '/' + dir;
-      
       var founded = fs.readdirSync(templateFolder + dir);
       for(var f of founded){
         var template = templateFolder + dir + '/' + f;
-        if(fs.lstatSync(template).isFile()) grunt.task.run('generate:' + template + ':' + f.split('.')[0] + ':' + projectName + dir);
+        if(fs.lstatSync(template).isFile()){
+          grunt.task.run('generate:' + template + ':' + f.split('.')[0] + ':' + projectName + dir);
+        } else if(fs.lstatSync(template).isDirectory()){
+          parseDir(dir + '/' + f);
+        }
       }
     };
     

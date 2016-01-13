@@ -1,12 +1,12 @@
 {
-  "name": "sdfsf",
-  "homepage": "https://github.com/sdfsf/sdfsf",
-  "main": "build/sdfsf.js",
+  "name": "pizi-backbone",
+  "homepage": "https://github.com/Manuel-Pi/pizi-backbone",
+  "main": "build/pizi-backbone.js",
   "dependencies": {
     "backbone": "*"
   },
   "version": "0.0.0",
-  "authors": "sdfsf",
+  "authors": "Manuel-Pi",
   "devDependencies": {
     "grunt": "*",
     "grunt-babel": "*",
